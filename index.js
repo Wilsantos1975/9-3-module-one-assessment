@@ -3,6 +3,7 @@
 
   Keep in mind that your functions must still have and use a parameter for accepting all movies.
 */
+const movies = require("./movies");
 const exampleMovies = require("./movies");
 // Do not change the line above.
 
@@ -28,7 +29,20 @@ const exampleMovies = require("./movies");
       "James and the Giant Peach",
     ];
  */
-function getAllMovieTitles() {}
+function getAllMovieTitles(arr) {
+  let output = [];
+  if (!arr.length) {
+    return output;
+  }
+
+  arr.forEach((el) => {
+    console.log(el);
+    if (el.title !== movies.title) {
+      output.push(el.title);
+    }
+  });
+  return output;
+}
 
 /**
  * getHighestMetascore()

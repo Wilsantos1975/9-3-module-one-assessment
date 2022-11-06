@@ -59,7 +59,7 @@ describe("getHighestMetascore()", () => {
   });
 });
 
-describe("getAverageIMDBRating()", () => {
+describe.skip("getAverageIMDBRating()", () => {
   test("should return the average IMDB rating across all movies", () => {
     const actual = getAverageIMDBRating(movies);
     const expected = 7.76;
@@ -77,7 +77,7 @@ describe("getAverageIMDBRating()", () => {
   });
 });
 
-describe("countByRating()", () => {
+describe.skip("countByRating()", () => {
   test("should return an object where the keys are ratings and the values are the number of movies with that rating", () => {
     const actual = countByRating(movies);
     const expected = { G: 3, PG: 7 };
@@ -95,7 +95,7 @@ describe("countByRating()", () => {
   });
 });
 
-describe("findById()", () => {
+describe.skip("findById()", () => {
   test("should return the entire movie based on the IMDB ID", () => {
     const id = "tt0892769";
     const actual = findById(movies, id);
@@ -137,7 +137,7 @@ describe("findById()", () => {
   });
 });
 
-describe("filterByGenre()", () => {
+describe.skip("filterByGenre()", () => {
   test("should return all movies that include the specified genre", () => {
     const genre = "Mystery";
     const actual = filterByGenre(movies, genre);
@@ -196,7 +196,7 @@ describe("filterByGenre()", () => {
   });
 });
 
-describe("getAllMoviesReleasedAtOrBeforeYear()", () => {
+describe.skip("getAllMoviesReleasedAtOrBeforeYear()", () => {
   test("should return all movies where the `released` date is equal to or less than the year given", () => {
     const year = 2000;
     const actual = getAllMoviesReleasedAtOrBeforeYear(movies, year);
@@ -239,7 +239,7 @@ describe("getAllMoviesReleasedAtOrBeforeYear()", () => {
   });
 });
 
-describe("getBiggestBoxOfficeMovie()", () => {
+describe.skip("getBiggestBoxOfficeMovie()", () => {
   test("should return the name of the movie with the highest box office", () => {
     const actual = getBiggestBoxOfficeMovie(movies);
     const expected = "Incredibles 2";
