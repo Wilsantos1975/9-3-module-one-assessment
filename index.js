@@ -79,7 +79,21 @@ function getHighestMetascore(arr) {
  *  getAverageIMDBRating(movies);
  *  //> 7.76
  */
-function getAverageIMDBRating() {}
+function getAverageIMDBRating(arr) {
+  let output = 0;
+  let finalOutput = 0;
+
+  if (!arr.length) {
+    return 0;
+  }
+  for (const movie of arr) {
+    let stringToNumber = ++movie.imdbRating;
+    output += stringToNumber;
+  }
+  finalOutput = output / arr.length;
+
+  return finalOutput - 1;
+}
 
 /**
  * countByRating()
@@ -92,7 +106,21 @@ function getAverageIMDBRating() {}
  *  countByRating(movies);
  *  //> { G: 3, PG: 7 }
  */
-function countByRating() {}
+function countByRating(arr) {
+  let output = {};
+
+  if (!arr.length) {
+    return output;
+  }
+  arr.forEach((movie) => {
+    if (!output.hasOwnProperty(movie.rated)) {
+      output[movie.rated] = 1;
+    } else if (output.hasOwnProperty(movie.rated)) {
+      output[movie.rated] += 1;
+    }
+  });
+  return output;
+}
 
 /**
  * findById()
@@ -108,7 +136,18 @@ function countByRating() {}
       // Toy Story 4
     };
  */
-function findById() {}
+function findById(arr, id) {
+  if (!arr.length) {
+    return null;
+  }
+  for (const movie of arr) {
+    if (movie.imdbID !== id) {
+      return null;
+    } else if (movie.imdbID === id) {
+      return movie;
+    }
+  }
+}
 
 /**
  * filterByGenre()
@@ -130,7 +169,25 @@ function findById() {}
  *  filterByGenre(movies, "Horror")
  *  //> []
  */
-function filterByGenre() {}
+function filterByGenre(arr, title) {
+  let output = [];
+  let genreOutput;
+  let lowerCaseTitle = title.toLowerCase();
+
+  if (!arr.length) {
+    return output;
+  }
+
+  arr.forEach((movie) => {
+    genreOutput = movie.genre.toLowerCase().split(",").join("").split(" ");
+    // console.log(genreOutput)
+
+    if (genreOutput.includes(lowerCaseTitle)) {
+      output.push(movie);
+    }
+  });
+  return output;
+}
 
 /**
  * getAllMoviesReleasedAtOrBeforeYear()
@@ -154,7 +211,24 @@ function filterByGenre() {}
       }
     ];
  */
-function getAllMoviesReleasedAtOrBeforeYear() {}
+function getAllMoviesReleasedAtOrBeforeYear(arr, year) {
+  let output = [];
+
+  if (!arr.length) {
+    return output;
+  }
+
+  for (const movie of arr) {
+    let releaseYear = movie.released.slice(7);
+    ++releaseYear
+
+    if(releaseYear <= year) {
+      output.push(movie)
+    } 
+
+  }
+return output
+}
 
 /**
  * getBiggestBoxOfficeMovie()
@@ -167,7 +241,25 @@ function getAllMoviesReleasedAtOrBeforeYear() {}
  *  getBiggestBoxOfficeMovie(movies);
  *  //> "Incredibles 2"
  */
-function getBiggestBoxOfficeMovie() {}
+function getBiggestBoxOfficeMovie(arr) {
+  let output = '';
+  let amount = 0;
+
+  if (!arr.length) {
+    return null;
+  }
+
+  arr.forEach((movie) => {
+    let boxInNumber = movie.boxOffice.slice(1).split(",").join('');
+    ++boxInNumber
+    if (boxInNumber > amount) {
+      amount = boxInNumber;
+      output = movie.title
+
+    }
+  })
+  return output
+}
 
 // Do not change anything below this line.
 module.exports = {
