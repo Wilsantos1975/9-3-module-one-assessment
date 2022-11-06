@@ -36,7 +36,6 @@ function getAllMovieTitles(arr) {
   }
 
   arr.forEach((el) => {
-    console.log(el);
     if (el.title !== movies.title) {
       output.push(el.title);
     }
@@ -55,7 +54,19 @@ function getAllMovieTitles(arr) {
  *  getHighestMetascore(movies);
  *  //> 96
  */
-function getHighestMetascore() {}
+function getHighestMetascore(arr) {
+  let output = 0;
+
+  if (!arr.length) {
+    return 0;
+  }
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].metascore > output) {
+      output = arr[i].metascore;
+    }
+  }
+  return ++output - 1; // i dont know why i had to substract one. ask
+}
 
 /**
  * getAverageIMDBRating()
